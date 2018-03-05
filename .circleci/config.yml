@@ -28,14 +28,19 @@ jobs:
           command: |
            ./gradlew test
            ./gradlew lint test
-      - run:
-          name: build and deploy to DeployGate
-          command: |
-           ./gradlew clean
-           ./gradlew assembleDebug
-           ./deploy.sh
       - store_artifacts:
           path: app/build/reports
           destination: reports
       - store_test_results:
           path: app/build/test-results
+      - run:
+          name: build
+          command: |
+           ./gradlew clean
+           ./gradlew assembleDebug
+      - store_artifacts:
+          path: app/build/outputs/apk/app-debug.apk
+          destination: apk
+      - run:
+          name: deploy to DeployGate
+          command: ./deploy.sh
