@@ -28,6 +28,9 @@ jobs:
           command: |
            ./gradlew test
            ./gradlew lint test
+      - run:
+          name: deploy to DeployGate
+          command: ./sh deploy.sh
       - store_artifacts:
           path: app/build/reports
           destination: reports
