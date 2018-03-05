@@ -29,8 +29,11 @@ jobs:
            ./gradlew test
            ./gradlew lint test
       - run:
-          name: deploy to DeployGate
-          command: sh deploy.sh
+          name: build and deploy to DeployGate
+          command: |
+          ./gradlew clean
+          ./gradlew assembleDebug
+          ./deploy.sh
       - store_artifacts:
           path: app/build/reports
           destination: reports
