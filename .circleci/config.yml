@@ -39,8 +39,7 @@ jobs:
            ./gradlew clean
            ./gradlew assembleDebug
       - store_artifacts:
-          path: app/build/outputs
-          destination: apk
+          path: app/build/outputs/apk/debug/app-debug.apk
       - run:
           name: deploy to DeployGate
           command: ./deploy.sh
