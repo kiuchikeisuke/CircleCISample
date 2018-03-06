@@ -44,7 +44,7 @@ jobs:
       - run:
           name: deploy to DeployGate
           command: |
-            if [${CIRCLE_BRANCH} = 'master' ]; then
+            if [ $CIRCLE_BRANCH = 'master' ]; then
               ./gradlew :app:uploadDeployGateDebug
             fi
           # command: ./deploy.sh
